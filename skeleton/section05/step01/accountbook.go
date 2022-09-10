@@ -26,9 +26,9 @@ func (ab *AccountBook) AddItem(item *Item) {
 // 最近追加したものを最大limit件だけItemを取得する
 func (ab *AccountBook) GetItems(limit int) []*Item {
 	// TODO: 返す件数を求め変数nに入れる
-	n := ab.NumItems()
+	n := ab.NumItems() - limit
 	/* TODO: 変数limitより件数が少ない場合 */
-	if limit >= n {
+	if n < 0 {
 		n = 0
 	}
 	return ab.items[n:]
