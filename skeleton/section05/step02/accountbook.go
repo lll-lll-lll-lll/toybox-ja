@@ -11,7 +11,7 @@ import (
 // 家計簿の項目
 type Item struct {
 	Category string
-	Price    int
+	Price    int64
 }
 
 // 家計簿の処理を行う型
@@ -54,7 +54,7 @@ func (ab *AccountBook) readItems() {
 		}
 
 		// TODO: ss[1]をint型に変換し、結果を変数priceと変数errに入れる
-		price, err := strconv.Atoi(ss[1])
+		price, err := strconv.ParseInt(ss[1], 10, 64)
 
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "エラー：", err)
